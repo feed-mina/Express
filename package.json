@@ -1,0 +1,11 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "@4 Express.js를 처음부터 작성할 수 있는 방법",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
