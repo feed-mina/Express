@@ -171,8 +171,17 @@ app.listen(8080);
 ##### next() 함수가 호출되지 않으면 미들웨어 사이클이 멈추기 때문에 주의 !
 ```javascript
 const logger = (req,res,next) => {
-    console.log(`Request)
+    console.log(`Request ${req.path)`);
+    next()
 }
+
+const auth = (req,res,next) => {
+   if(!isAdmin(req)){
+     res.send("Not Authorized");
+     return;
+     }
+   next();
+ }
 ```
 
 
