@@ -298,7 +298,7 @@ app.use('/users',auth('member'),userRouter);
 ##### REST API는 API의 동작을 HTTP method + 명사형 URL로 표현함
 ##### /posts라는 URL은 '게시글'이라는 자원을 가리킨다고 할때, GET-가져오기 ,POST- 새로 만들기, PUT = 수정하기, DELETE - 삭제하기의 HTTP method와 결합하여 API동작을 정의 
 
-#### REST APU - URL 표현법 
+#### REST API - URL 표현법 
 ##### REST API URL의 자원은 복수형으로 표현되며 하나의 자원에 대한 접근은 복수형 + 아이디를 통해 특정 자원에 접근함 /posts 는 '게시글 전체'를 칭하는 URL이라고 할때 /posts/1은 1번 게시글 이라는 자원을 표현함
 
 #### REST API - 계층적 자원
@@ -319,13 +319,13 @@ app.use('/users',auth('member'),userRouter);
 ##### JSON 에서 Array는 [item1,item2]로 표현함, item에는 어떤 값이라도 사용될 수 있음 (문자열,숫자,JSON 객체 등) ex) ['first',{name:'bob'}]
 
 ### Express.js로 REST API구현하기
-#### 데이터베읏 없이 Node.js 모듈 활용, 간단한 메모의 작성, 수정, 삭제, 확인 기능 API구현
-#####
+###### 데이터베이스 없이 Node.js 모듈 활용, 간단한 메모의 작성, 수정, 삭제, 확인 기능 API구현
+
 
 #### MVC 패턴 : 웹 서비스의 가장 대표적인 프로젝트 구성 패턴으로 프로젝트의 기능들을 어떻게 분리할지 에 대한 하나의 구성방법, Model-View-Controller를 구분하여 프로젝트 구조를 구성하는 것 
 ##### MVC패턴 - Model : 데이터에 접근하는 기능 또는 데이터 그 자체를 의미함, 데이터의 읽기, 쓰기는 Model을 통해서만 이루어지도록 구성해야함 
-##### View : 데이터를 표현하는 기능을 의미함 , 주로 Controller에 의해 데이터를 전달받고 전달받은 데이터를 화면에 표시해주는 기능을 담당
-##### Controller : Model을 통해 데이터에 접근 하여, 처리 결과를 View로 전달하는 기능을 의미함 웹 서비에서는 주로 라우팅 함수가 해당 기능을 수행함
+##### MVC패턴 -  View : 데이터를 표현하는 기능을 의미함 , 주로 Controller에 의해 데이터를 전달받고 전달받은 데이터를 화면에 표시해주는 기능을 담당
+##### MVC패턴 - Controller : Model을 통해 데이터에 접근 하여, 처리 결과를 View로 전달하는 기능을 의미함 웹 서비에서는 주로 라우팅 함수가 해당 기능을 수행함
 
 ##### Javascript의 Array함수 사용하여 데이터 처리 구현 , router와 route handler를 사용하여 Http 요청, 응답처리 구현, 오류처리 미들웨어를 사용하여 오류를 처리하는 방법 구현, 정의되지 않는 라우팅에 대해 404오류처리 구현]]
 
@@ -438,7 +438,7 @@ const note = notes[index];
 note.title = title;
 note.content = content ;
 note[index] = note;
-return note
+return note;
 }
 
 ```
@@ -520,7 +520,7 @@ app.use((err, req, res, next) => {
 //index.js
 app.use((req, res, next) => {
     res.status(404);
-    res.json({
+    res.send({
         result : 'fail',
         error: `page not found ${req.path}`,
     });
